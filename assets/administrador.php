@@ -11,7 +11,8 @@ $sql = "SElECT * FROM usuarios WHERE Correo = '$correo'";
 $resultado = $conexion->query($sql);
 $rows = $resultado->fetch_assoc();
 ?>
-
+<!DOCTYPE html>
+<html lang="es">
 
 <head> 
 <meta charset="UTF-8">
