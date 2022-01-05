@@ -234,7 +234,7 @@ estilos de la utilidad
                 </div>
                 <div class="datos-perfil">
                     <h4 class="titulo-usuario"><?php echo utf8_decode($rows['Nombre_Completo']); ?></h4>
-                    <p class="bio-usuario"><? php echo utf8_decode($rows['Biografia']); ?></p>
+                    <p class="bio-usuario"><?php echo utf8_decode($rows['Biografia']); ?></p>
                     <ul class="lista-perfil">
                     </ul>
                 </div>
