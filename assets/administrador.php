@@ -19,75 +19,62 @@ $rows = $resultado->fetch_assoc();
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bienvenido Usuario</title>
-<?php include 'includes/barranavegacion.php'?> 
-<link rel="stylesheet" href="css/estilos2.css" />  <!-- mi hoja de estilos -->
-</head>
-
-<!--          Visualizador de usuarios       -->
-
-
+    <!-- Font Awesome -->
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+  rel="stylesheet"
+/>
+<!-- Google Fonts -->
+<link
+  href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+  rel="stylesheet"
+/>
+<!-- boostrap -->
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.1/mdb.min.css"
+  rel="stylesheet"
+/> 
+    <!-- custom estilos -->
+<link rel="stylesheet" href="css/admin_fb.css" />  
+</head>                              
 <body>
-    <?php include 'includes/perfil.php' ?>
-        <div style="padding-top: 60px;">
+<header>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <!-- Container wrapper -->
+  <div class="container-fluid">
+    <!-- componentes izquierda -->
+    <div>
+    <a class="navbar-brand" href="#">
+      <img
+        src="../assets/images/logo_tec_juarez3.png"
+
+      />
+    </a>
+    </div>
+    <!-- componentes izquierda -->
+    
+    <!-- componetes centro -->
+    <!-- componetes centro -->
+
+    <!-- componetes derecha -->
+    <!-- componetes derecha -->
+  </div>
+  <!-- Container wrapper -->
+</nav>
+<!-- Navbar --> 
 
 
-            <div>
-                <div class="container">
-                    <table class="table table-dark" style="table-layout: fixed; word-wrap: break-word;" id="myList">
-                        <thead>
-                            <tr>
-                            <!--th scope="col">Id</th-->
-                                <th scope="col">Perfil</th>
-                                <th scope="col">Nombre</th>
-                                <th scope="col">Biografia</th>
-                                <th scope="col">Correo</th>
-                                <th scope="col">Password</th>
-                                <th scope="col">Eliminar Usuario</th>
-                                <th scope="col">Editar Usuario</th>
-                            </tr>
-                        </thead>
+</header>
+<main></main>
+<footer>
 
-                        <tbody>
-                            <?php
-                            $sql = "SELECT * from usuarios";
-                            $result = mysqli_query($conexion, $sql);
-
-                            while ($mostrar = mysqli_fetch_array($result)) {
-                            ?>
-
-
-
-
-                                <tr>
-                                <!--td>?php echo $mostrar['Id'] ?> </td-->
-                                    <td><?php echo $mostrar['Perfil'] ?> </td>
-                                    <td><?php echo $mostrar['Nombre_Completo'] ?> </td>
-                                    <td><?php echo $mostrar['Biografia'] ?> </td>
-                                    <td><?php echo $mostrar['Correo'] ?> </td>
-
-                                    <td><?php echo $mostrar['Password']?> </td>
-                                    <td>
-                                        <a href="deleteusuario.php?buscarId=<?= $mostrar['Id'] ?>" class="btn btn-outline-danger">Eliminar</a>
-
-                                    </td>
-                                    <td>
-                                        <a href="updateusuario.php?buscarId=<?= $mostrar['Id'] ?>" class="btn btn-outline-info">Actualizar</a>
-
-                                    </td>
-                                </tr>
-                            <?php
-                            }
-                            ?>
-
-                        </tbody>
-                    </table>
-
-                </div>
-
-
-
-            </div>
-            <footer> <?php  include 'includes/footer.php' ?> </footer>
-        </div>
-
-
+</footer>
+</body>
+<!-- MDB -->
+<script
+  type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.1/mdb.min.js"
+></script>
+</html>
