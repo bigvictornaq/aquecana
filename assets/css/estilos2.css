@@ -108,6 +108,12 @@ main{
     color: #46A2FD;
 }
 
+/***error mensaje en la login**/
+.contenedor__login-register form .err_nav{
+	color: #D63301;
+    background-color: #FFCCBA;   
+}
+
 .contenedor__login-register form input{
     width: 100%;
     margin-top: 20px;

@@ -2,6 +2,10 @@
 <?php
   session_start();
   
+  // Motrar todos los errores de PHP
+ini_set('error_reporting', E_ALL);
+  error_reporting(E_ALL);
+  
 ?>
 
 <!DOCTYPE html>
@@ -40,6 +44,11 @@
                     <!--Login-->
                     <form action="php/Login_usuarios_be.php" method = "POST" class="formulario__login">
                         <h2>Iniciar Sesión</h2>
+                        <?php if(isset($_GET['error'])){ ?>
+                            <div class="err_nav">
+                            <?= $_GET['error'] ?>
+                        </div>
+                       <?php } ?>
                         <input type="text" placeholder="Correo Institucional" name= "Correo">
                         <input type="password" placeholder="Contraseña" name = "Password">
                         <button>Entrar</button>
