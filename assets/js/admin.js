@@ -1,5 +1,5 @@
 $(document).ready( function () {
-    $('#table_id').DataTable({
+    $('#tablita').DataTable({
         "dom": '<"top"i>rt<"bottom"flp><"clear">'
     });
 } );

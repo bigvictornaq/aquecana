@@ -36,13 +36,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <!-- JS de datatable es cdn -->
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
-<script>
-  $(document).ready( function () {
-    $('#table_id').DataTable({
-        "dom": '<"top"i>rt<"bottom"flp><"clear">'
-    });
-} );
-</script>
+<script type="text/javascript" src="/assets/js/admin.js"></script>
 </head>                              
 <body class="bg-light">
 <header>
@@ -141,7 +135,7 @@
                   <button type="button" class="btn btn-link text-reset" datadata-ripple-color="dark">Usurios</button>
                   <!-- opcion para administrador -->
                   <?php }?>
-                  <button type="button" class="btn btn-link text-reset" datadata-ripple-color="dark">Documnetos(Expedientes)</button>
+                  <button type="button" onclick="window.location.href='expen_cr.php'" class="btn btn-link text-reset" datadata-ripple-color="dark">Documnetos(Expedientes)</button>
                 </div>
                 <!-- elementos de la izquierda -->
 

@@ -25,7 +25,7 @@ $rows = $resultado->fetch_assoc();
                      <div class="d-flex justify-content-center">
                          <!-- tablita con datitos -->
                      
-              <table id="table_id" class="display">
+              <table id="tablita" class="display">
                   <thead>
                       <tr>
                                 <th>Perfil</th>
@@ -38,14 +38,28 @@ $rows = $resultado->fetch_assoc();
                       </tr>
                   </thead>
                   <tbody>
+                      <?php 
+                      $sql = "SELECT * from usuarios";
+                      $result = mysqli_query($conexion, $sql);
+
+                      while ($mostrar = mysqli_fetch_array($result)) {
+                      ?>
                       <tr>
-                          <td>Row 1 Data 1</td>
-                          <td>Row 1 Data 2</td>
+                          <td><?=$mostrar['Perfil']?></td>
+                          <td><?=$mostrar['Nombre_Completo']?></td>
+                          <td><?=$mostrar['Biografia']?></td>
+                          <td><?=$mostrar['Correo']?></td>
+                          <td><?=$mostrar['Password']?></td>
+                          <td>
+                                        <a href="deleteusuario.php?buscarId=<?= $mostrar['Id'] ?>" class="btn btn-outline-danger">Eliminar</a>
+
+                                    </td>
+                                    <td>
+                                        <a href="updateusuario.php?buscarId=<?= $mostrar['Id'] ?>" class="btn btn-outline-info">Actualizar</a>
+
+                                    </td>
                       </tr>
-                      <tr>
-                          <td>Row 2 Data 1</td>
-                          <td>Row 2 Data 2</td>
-                      </tr>
+                      <?php }?>
                   </tbody>
                   <tfoot>
                   <tr>
