@@ -59,7 +59,7 @@ $rows = $resultado->fetch_assoc();
                                       </div>
                                       <div class="modal-body">
                                           <div class="container-fluid">
-                                          <form class="was-validated">
+                                          <form class="was-validated" action="php/add_docs.php" method="POST" enctype="multipart/form-data">
                                                         <div class="row">
                                                             <div class="col-md-7">
                                                             <label for="validationServer01" class="form-label">Nombre del Documento</label>
@@ -69,6 +69,7 @@ $rows = $resultado->fetch_assoc();
                                                                    id="validationServer01"
                                                                    value="Mark"
                                                                    required
+                                                                   name="doc_name"
                                                                  />
                                                                 
                                                             </div>
@@ -76,13 +77,13 @@ $rows = $resultado->fetch_assoc();
                                                         <div class="row">
                                                             <div class="col-md-9">
                                                             <div class="invalid-feedback">Documento</div>
-                                                            <input type="file" class="form-control" aria-label="file example" required />
+                                                            <input type="file" class="form-control" aria-label="file example" name="doc" required />
                                                           
                                                             </div>
                                                         </div>
                                                         <div class="row mb-2">
                                                             <div class="col-md-7">
-                                                            <select class="form-select" aria-label="Default select example">
+                                                            <select class="form-select" aria-label="Default select example" name="semestre">
                                                               <option selected>Seleciona el semestre</option>
                                                               <option value="1">One</option>
                                                               <option value="2">Two</option>
@@ -100,12 +101,12 @@ $rows = $resultado->fetch_assoc();
                                                         <div class="row">
                                                             <div class="col-md-4">
                                                             <div class="form-outline">
-                                                                 <input type="text" id="typeText" class="form-control" />
-                                                                 <label class="form-label" for="typeText">fecha hora</label>
+                                                                 <input type="text" id="typeText" class="form-control" name="fecha" />
+                                                                 <label class="form-label" for="typeText" >fecha hora</label>
                                                                </div>
                                                             </div>
                                                             <div class="col-md-4 ms-auto">
-                                                            <button type="submit" class="btn btn-primary btn-block">agregar documento</button>
+                                                            <button type="submit" value="upload" class="btn btn-primary btn-block">agregar documento</button>
                                                             </div>
                                                         </div>
 
@@ -128,12 +129,12 @@ $rows = $resultado->fetch_assoc();
                             <?php } ?>
 
                             <!-- tabla de los documentos -->
-                                <table class="dsiplay" id="talita">
+                                <table class="display" id="tablita2">
                                   <thead>
                                     <tr>
-                                      <th scope="col">Nombre del documento</th>
-                                      <th scope="col">ano </th>
-                                      <th scope="col">semestre</th>
+                                      <th >Nombre del documento</th>
+                                      <th >ano </th>
+                                      <th >semestre</th>
                                     </tr>
                                   </thead>
                                   <tbody>
