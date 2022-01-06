@@ -21,7 +21,11 @@
             </button>
             <ul class="nav-menu">
                 <li class="nav-menu-item">
+                    <?php if($_SESSION['rol'] === 1){ ?>
+                        <a href="administrador.php" class="nav-menu-link nav-link">Inicio</a>
+                   <?php }else{ ?>
                     <a href="inicio.php" class="nav-menu-link nav-link">Inicio</a>
+                  <?php }?>
                 </li>
                 <li class="nav-menu-item">
                     <a href="expedientes.php" class="nav-menu-link nav-link">Expedientes</a>

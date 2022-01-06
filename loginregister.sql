@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 04-01-2022 a las 11:26:09
--- Versión del servidor: 10.4.21-MariaDB
--- Versión de PHP: 8.0.11
+-- Host: 127.0.0.1
+-- Generation Time: Jan 06, 2022 at 04:02 AM
+-- Server version: 10.4.18-MariaDB
+-- PHP Version: 8.0.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,26 +18,34 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `loginregister`
+-- Database: `loginregister`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `documentos`
+-- Table structure for table `documentos`
 --
 
 CREATE TABLE `documentos` (
   `IdDoc` int(11) NOT NULL,
   `Documento` varchar(260) NOT NULL,
-  `año` int(4) NOT NULL,
+  `url` varchar(200) NOT NULL,
+  `año` varchar(100) NOT NULL,
   `semestre` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `documentos`
+--
+
+INSERT INTO `documentos` (`IdDoc`, `Documento`, `url`, `año`, `semestre`) VALUES
+(2, 'coco_mastes', 'PDF-61d6578ed60bc8.21579895.pdf', '2019-Ene-jun', 2);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `roles`
+-- Table structure for table `roles`
 --
 
 CREATE TABLE `roles` (
@@ -46,7 +54,7 @@ CREATE TABLE `roles` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Volcado de datos para la tabla `roles`
+-- Dumping data for table `roles`
 --
 
 INSERT INTO `roles` (`IdRol`, `Rol`) VALUES
@@ -56,7 +64,7 @@ INSERT INTO `roles` (`IdRol`, `Rol`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `usuarios`
+-- Table structure for table `usuarios`
 --
 
 CREATE TABLE `usuarios` (
@@ -72,31 +80,33 @@ CREATE TABLE `usuarios` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Volcado de datos para la tabla `usuarios`
+-- Dumping data for table `usuarios`
 --
 
 INSERT INTO `usuarios` (`Id`, `Nombre_Completo`, `Perfil`, `Portada`, `Biografia`, `Correo`, `Password`, `IdDoc`, `IdRol`) VALUES
 (22, 'javier yair gonzalez millan', '', '', 'administrador de sistemas ', 'javier.yair78@gmail.com', 'J7A8V9I5', NULL, 1),
-(23, 'correo de prueba', '', '', 'este correo es de prueba ', 'correo.prueba@gmail.com', '123', NULL, 2);
+(23, 'correo de prueba', '', '', 'este correo es de prueba ', 'correo.prueba@gmail.com', '123', NULL, 2),
+(26, 'El navaBoy', '', '', '', 'cococo@gmail.com', '123', NULL, 2),
+(27, '', '', '', '', '', '', NULL, 2);
 
 --
--- Índices para tablas volcadas
+-- Indexes for dumped tables
 --
 
 --
--- Indices de la tabla `documentos`
+-- Indexes for table `documentos`
 --
 ALTER TABLE `documentos`
   ADD PRIMARY KEY (`IdDoc`);
 
 --
--- Indices de la tabla `roles`
+-- Indexes for table `roles`
 --
 ALTER TABLE `roles`
   ADD PRIMARY KEY (`IdRol`);
 
 --
--- Indices de la tabla `usuarios`
+-- Indexes for table `usuarios`
 --
 ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`Id`),
@@ -104,33 +114,33 @@ ALTER TABLE `usuarios`
   ADD KEY `IdRol` (`IdRol`);
 
 --
--- AUTO_INCREMENT de las tablas volcadas
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT de la tabla `documentos`
+-- AUTO_INCREMENT for table `documentos`
 --
 ALTER TABLE `documentos`
-  MODIFY `IdDoc` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `IdDoc` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT de la tabla `roles`
+-- AUTO_INCREMENT for table `roles`
 --
 ALTER TABLE `roles`
   MODIFY `IdRol` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT de la tabla `usuarios`
+-- AUTO_INCREMENT for table `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
--- Restricciones para tablas volcadas
+-- Constraints for dumped tables
 --
 
 --
--- Filtros para la tabla `usuarios`
+-- Constraints for table `usuarios`
 --
 ALTER TABLE `usuarios`
   ADD CONSTRAINT `usuarios_ibfk_1` FOREIGN KEY (`IdDoc`) REFERENCES `documentos` (`IdDoc`) ON DELETE CASCADE ON UPDATE CASCADE,

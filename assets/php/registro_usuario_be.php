@@ -10,7 +10,7 @@ $idrol = $_POST['IdRol'];
 
 /*Query*/
 $query = "INSERT INTO usuarios(Nombre_Completo, Correo, Password, IdRol )
-VALUES ('$nombre_completo', '$correo', '$password' '2')";
+VALUES ('$nombre_completo', '$correo', '$password' ,'2')"; //este men le falto coma
 
 /* ejecutar una comprobación (que no se repitan datos (correo)) */
 $verificar_correo = mysqli_query($conexion, "SELECT * FROM usuarios WHERE Correo ='$correo'");
@@ -26,7 +26,7 @@ if(mysqli_num_rows($verificar_correo) > 0){
 }
 
 /*ejecutar query */
-$ejecutar = mysqli_query($conexion, $query);
+$ejecutar = mysqli_query($conexion, $query) or die(mysqli_error($conexion));
 
 if($ejecutar){
     echo '
@@ -37,8 +37,14 @@ if($ejecutar){
     ';
     
 }else{
+   
+    ini_set('display_errors', 1);
+    ini_set('display_startup_errors', 1);
+    error_reporting(E_ALL);
+    
     echo'<script>
-    alert ("usuario no registrado intentalo nuevamente");
+    alert ('.$ejecutar.');
+    console.log('.$ejecutar.')
     window.location = "../index2.php";
     </script>
     ';

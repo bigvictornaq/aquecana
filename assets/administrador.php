@@ -11,61 +11,46 @@ $sql = "SElECT * FROM usuarios WHERE Correo = '$correo'";
 $resultado = $conexion->query($sql);
 $rows = $resultado->fetch_assoc();
 ?>
+  <?php include 'includes/admin_bs/header.php'  ?>
 
+  <!-- Section: backgroud gris align-items-center -->
+  <section class="">
+      <div class="container">
+            <div class="card w-100" style="width: 18rem;">
+                <div class="card-body">
+                     <h5 class="card-title">Lista de Usuarios</h5>
+                     <p class="card-text">
+                       Aqui se puede modificar todos los usuarios
+                     </p>
+                     <div class="d-flex justify-content-center">
+                         <!-- tablita con datitos -->
+                     
+              <table id="tablita" class="display">
+                  <thead>
+                      <tr>
+                                <th>Perfil</th>
+                                <th>Nombre</th>
+                                <th>Biografia</th>
+                                <th>Correo</th>
+                                <th>Password</th>
+                                <th>Eliminar Usuario</th>
+                                <th>Editar Usuario</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <?php 
+                      $sql = "SELECT * from usuarios";
+                      $result = mysqli_query($conexion, $sql);
 
-<head> 
-<meta charset="UTF-8">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bienvenido Usuario</title>
-<?php include 'includes/barranavegacion.php'?> 
-<link rel="stylesheet" href="css/estilos2.css" />  <!-- mi hoja de estilos -->
-</head>
-
-<!--          Visualizador de usuarios       -->
-
-
-<body>
-    <?php include 'includes/perfil.php' ?>
-        <div style="padding-top: 60px;">
-
-
-            <div>
-                <div class="container">
-                    <table class="table table-dark" style="table-layout: fixed; word-wrap: break-word;" id="myList">
-                        <thead>
-                            <tr>
-                            <!--th scope="col">Id</th-->
-                                <th scope="col">Perfil</th>
-                                <th scope="col">Nombre</th>
-                                <th scope="col">Biografia</th>
-                                <th scope="col">Correo</th>
-                                <th scope="col">Password</th>
-                                <th scope="col">Eliminar Usuario</th>
-                                <th scope="col">Editar Usuario</th>
-                            </tr>
-                        </thead>
-
-                        <tbody>
-                            <?php
-                            $sql = "SELECT * from usuarios";
-                            $result = mysqli_query($conexion, $sql);
-
-                            while ($mostrar = mysqli_fetch_array($result)) {
-                            ?>
-
-
-
-
-                                <tr>
-                                <!--td>?php echo $mostrar['Id'] ?> </td-->
-                                    <td><?php echo $mostrar['Perfil'] ?> </td>
-                                    <td><?php echo $mostrar['Nombre_Completo'] ?> </td>
-                                    <td><?php echo $mostrar['Biografia'] ?> </td>
-                                    <td><?php echo $mostrar['Correo'] ?> </td>
-
-                                    <td><?php echo $mostrar['Password']?> </td>
-                                    <td>
+                      while ($mostrar = mysqli_fetch_array($result)) {
+                      ?>
+                      <tr>
+                          <td><?=$mostrar['Perfil']?></td>
+                          <td><?=$mostrar['Nombre_Completo']?></td>
+                          <td><?=$mostrar['Biografia']?></td>
+                          <td><?=$mostrar['Correo']?></td>
+                          <td><?=$mostrar['Password']?></td>
+                          <td>
                                         <a href="deleteusuario.php?buscarId=<?= $mostrar['Id'] ?>" class="btn btn-outline-danger">Eliminar</a>
 
                                     </td>
@@ -73,20 +58,34 @@ $rows = $resultado->fetch_assoc();
                                         <a href="updateusuario.php?buscarId=<?= $mostrar['Id'] ?>" class="btn btn-outline-info">Actualizar</a>
 
                                     </td>
-                                </tr>
-                            <?php
-                            }
-                            ?>
-
-                        </tbody>
-                    </table>
-
+                      </tr>
+                      <?php }?>
+                  </tbody>
+                  <tfoot>
+                  <tr>
+                                <th>Perfil</th>
+                                <th>Nombre</th>
+                                <th>Biografia</th>
+                                <th>Correo</th>
+                                <th>Password</th>
+                                <th>Eliminar Usuario</th>
+                                <th>Editar Usuario</th>
+                      </tr>
+                  </tfoot>
+            </table>
+            <!-- tablita con datitos -->
+                     </div>
+             
+                   
+                     <a href="#" class="card-link">Card link</a>
+                     <a href="#" class="card-link">Another link</a>
                 </div>
-
-
-
             </div>
-            <footer> <?php  include 'includes/footer.php' ?> </footer>
-        </div>
+          
+      </div>
+  </section>
+  <!-- Section: backgroud gris -->
+</main>
 
+<?php include 'includes/admin_bs/footer.php'  ?>
 
