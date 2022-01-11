@@ -12,7 +12,7 @@ $resultado = $conexion->query($sql);
 $rows = $resultado->fetch_assoc();
 ?>
 
-<?php include 'includes/admin_bs/header.php'  ?>
+<?php include 'includes/header.php'  ?>
 
 <!-- Section: Documentos files -->
 <section class="">
@@ -85,16 +85,8 @@ $rows = $resultado->fetch_assoc();
                                                             <div class="col-md-7">
                                                             <select class="form-select" aria-label="Default select example" name="semestre">
                                                               <option selected>Seleciona el semestre</option>
-                                                              <option value="1">One</option>
-                                                              <option value="2">Two</option>
-                                                              <option value="3">Three</option>
-                                                              <option value="4">Three</option>
-                                                              <option value="5">Three</option>
-                                                              <option value="6">Three</option>
-                                                              <option value="7">Three</option>
-                                                              <option value="8">Three</option>
-                                                              <option value="9">Three</option>
-                                                              <option value="10">Three</option>
+                                                              <option value="1">Ene-Jun</option>
+                                                              <option value="2">Ago-Dic</option>
                                                             </select>
                                                             </div>
                                                         </div>
@@ -133,7 +125,7 @@ $rows = $resultado->fetch_assoc();
                                   <thead>
                                     <tr>
                                       <th >Nombre del documento</th>
-                                      <th >ano </th>
+                                      <th >año </th>
                                       <th >semestre</th>
                                     </tr>
                                   </thead>
@@ -162,4 +154,4 @@ $rows = $resultado->fetch_assoc();
 
 
 </main>
-<?php include 'includes/admin_bs/footer.php'  ?>
+<?php include 'includes/footer.php'  ?>

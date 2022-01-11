@@ -21,11 +21,9 @@ $rows = $resultado->fetch_assoc();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio</title>
     <?php  include 'includes/barranavegacion.php' ?>
-    <?php include 'includes/perfil.php'  ?>
-    <link rel="stylesheet" href="css/estilos2.css" />  <!-- mi hoja de estilos -->
 </head>
 
-
+<body>
 <div class="row-12;">
         <h1 style="text-align: center;">Registros</h1>
     </div>
@@ -97,7 +95,10 @@ $rows = $resultado->fetch_assoc();
                     </tr>
 </div>
 </div>
-<body>
-<footer>      <?php include 'includes/footer.php' ?>  </footer>    
-</body>
+
+<br>
+<br>
+<div >
+</div>  
+
 
