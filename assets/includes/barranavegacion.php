@@ -126,7 +126,7 @@
           <section class="py-3 d-flex justify-content-between align-items-center">
                 <!-- elementos de la izquierda -->
                 <div>
-                  <button type="button" onclick="window.location.href='expen_cr.php'" class="btn btn-link text-reset" datadata-ripple-color="dark">Documnetos(Expedientes)</button>
+              
                 </div>
                 <!-- elementos de la izquierda -->
 

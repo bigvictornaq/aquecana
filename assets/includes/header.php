@@ -59,7 +59,8 @@
     <!-- componetes centro -->
     <div>      
         <!-- validacion de usuario -->
-          <a class="btn btn-outline-dark btn-rounded" role='button' href="administrador.php"><i class="fas fa-home fa-lg me-2"></i>Inicio</a>                
+          <a class="btn btn-outline-dark btn-rounded" role='button' href="administrador.php"><i class="fas fa-home fa-lg me-2"></i>Inicio</a>     
+          <a class="btn btn-outline-dark btn-rounded" role='button' href="expen_cr.php"><i class="fas fa-file-contract fa-lg me-2"></i>Expedientes</a>           
          <!-- validacion de usuario -->
     </div>
     <!-- componetes centro -->
@@ -125,10 +126,7 @@
           <section class="py-3 d-flex justify-content-between align-items-center">
                 <!-- elementos de la izquierda -->
                 <div>
-                  <!-- opcion para administrador -->
-                  <button type="button" type="button" onclick="window.location.href='administrador.php'" class="btn btn-link text-reset" datadata-ripple-color="dark">Usuarios</button>
-                  <!-- opcion para administrador -->
-                  <button type="button" onclick="window.location.href='expen_cr.php'" class="btn btn-link text-reset" datadata-ripple-color="dark">Documentos(Expedientes)</button>
+
                 </div>
                 <!-- elementos de la izquierda -->
 
