@@ -6,11 +6,11 @@ include 'conexion_be.php';
 $nombre_completo = $_POST['Nombre_Completo'];
 $correo = $_POST['Correo'];
 $password = $_POST['Password'];
-$idrol = $_POST['IdRol'];
+$idrol = ['IdRol'];
 
 /*Query*/
 $query = "INSERT INTO usuarios(Nombre_Completo, Correo, Password, IdRol )
-VALUES ('$nombre_completo', '$correo', '$password' ,'2')"; //este men le falto coma
+VALUES ('$nombre_completo', '$correo', '$password' ,'2')"; 
 
 /* ejecutar una comprobación (que no se repitan datos (correo)) */
 $verificar_correo = mysqli_query($conexion, "SELECT * FROM usuarios WHERE Correo ='$correo'");

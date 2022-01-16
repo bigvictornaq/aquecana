@@ -16,6 +16,15 @@
 ![siuu](https://raw.githubusercontent.com/bigvictornaq/aquecana/v_nava_bt_organizacion/Diagrama%20UML%20proyecto%20(1).png)
 
 
+----
+
+## Ilustracion
+
+![ns](https://raw.githubusercontent.com/bigvictornaq/aquecana/v_nava_bt_organizacion/assets/images/unoss.gif)
+
+---
+
+![ns2](https://raw.githubusercontent.com/bigvictornaq/aquecana/v_nava_bt_organizacion/assets/images/dosss.gif)
 
 
 ### License

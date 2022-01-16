@@ -11,7 +11,7 @@ $sql = "SElECT * FROM usuarios WHERE Correo = '$correo'";
 $resultado = $conexion->query($sql);
 $rows = $resultado->fetch_assoc();
 ?>
-  <?php include 'includes/admin_bs/header.php'  ?>
+  <?php include 'includes/header.php'  ?>
 
   <!-- Section: backgroud gris align-items-center -->
   <section class="">
@@ -28,7 +28,6 @@ $rows = $resultado->fetch_assoc();
               <table id="tablita" class="display">
                   <thead>
                       <tr>
-                                <th>Perfil</th>
                                 <th>Nombre</th>
                                 <th>Biografia</th>
                                 <th>Correo</th>
@@ -45,17 +44,16 @@ $rows = $resultado->fetch_assoc();
                       while ($mostrar = mysqli_fetch_array($result)) {
                       ?>
                       <tr>
-                          <td><?=$mostrar['Perfil']?></td>
                           <td><?=$mostrar['Nombre_Completo']?></td>
                           <td><?=$mostrar['Biografia']?></td>
                           <td><?=$mostrar['Correo']?></td>
                           <td><?=$mostrar['Password']?></td>
                           <td>
-                                        <a href="deleteusuario.php?buscarId=<?= $mostrar['Id'] ?>" class="btn btn-outline-danger">Eliminar</a>
+                                        <a href="php/deleteusuario.php?buscarId=<?= $mostrar['Id'] ?>" class="btn btn-outline-danger">Eliminar</a>
 
                                     </td>
                                     <td>
-                                        <a href="updateusuario.php?buscarId=<?= $mostrar['Id'] ?>" class="btn btn-outline-info">Actualizar</a>
+                                        <a href="php/updateusuario.php?buscarId=<?= $mostrar['Id'] ?>" class="btn btn-outline-info">Actualizar</a>
 
                                     </td>
                       </tr>
@@ -63,7 +61,6 @@ $rows = $resultado->fetch_assoc();
                   </tbody>
                   <tfoot>
                   <tr>
-                                <th>Perfil</th>
                                 <th>Nombre</th>
                                 <th>Biografia</th>
                                 <th>Correo</th>
@@ -87,5 +84,5 @@ $rows = $resultado->fetch_assoc();
   <!-- Section: backgroud gris -->
 </main>
 
-<?php include 'includes/admin_bs/footer.php'  ?>
+<?php include 'includes/footer.php'  ?>
 

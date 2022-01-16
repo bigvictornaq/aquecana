@@ -21,8 +21,7 @@ $rows = $resultado->fetch_assoc();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio</title>
     <?php  include 'includes/barranavegacion.php' ?>
-    <?php include 'includes/perfil.php'  ?>
-    <link rel="stylesheet" href="css/estilos2.css" />  <!-- mi hoja de estilos -->
+    <!--link rel="stylesheet" href="css/estilos2.css" />  !-- mi hoja de estilos -->
     <link rel="stylesheet" href="css/visualizador.css"> <!--estilos del visualizador de pdf-->
     
     </head>
@@ -30,7 +29,8 @@ $rows = $resultado->fetch_assoc();
     
         <h1 class="title">Resultados Evaluación Docente</h1>
         <object class="pdfview" type="application/pdf" data="https://www.imaginanet.com/pdfinet/Dise%C3%B1o%20Responsive%20o%20Adaptativo.pdf"></object>
-
+        <br>
+        <br>
         <footer>      <?php include 'includes/footer.php' ?>  </footer>
     </body>
 
