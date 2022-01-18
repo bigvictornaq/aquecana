@@ -18,14 +18,16 @@ $rows = $resultado->fetch_assoc();
       <div class="container">
             <div class="card w-100" style="width: 18rem;">
                 <div class="card-body">
-                     <h5 class="card-title">Lista de Usuarios</h5>
+                     <h2 class="card-title">Lista de Usuarios con vista de su perfiles</h2>
                      <p class="card-text">
-                       Aqui se puede modificar todos los usuarios
+                       Aqui Podras agregar documentos y visualizar perfil del los usuarios
                      </p>
                      <div class="d-flex justify-content-center">
                          <!-- tablita con datitos -->
                      
-              <table id="tablita" class="display">
+              
+
+            <table id="tablita" class="display">
                   <thead>
                       <tr>
                                 <th>Nombre</th>
@@ -70,6 +72,7 @@ $rows = $resultado->fetch_assoc();
                       </tr>
                   </tfoot>
             </table>
+
             <!-- tablita con datitos -->
                      </div>
              

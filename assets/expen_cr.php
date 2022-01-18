@@ -12,7 +12,7 @@ $resultado = $conexion->query($sql);
 $rows = $resultado->fetch_assoc();
 ?>
 
-<?php include 'includes/header.php'  ?>
+<?php include 'includes/header.php' ?>
 
 <!-- Section: Documentos files -->
 <section class="">
@@ -59,55 +59,47 @@ $rows = $resultado->fetch_assoc();
                                       </div>
                                       <div class="modal-body">
                                           <div class="container-fluid">
-                                          <form class="was-validated" action="php/add_docs.php" method="POST" enctype="multipart/form-data">
+                                          <form id="nameform" class="was-validated" action="php/add_docs.php" method="POST" enctype="multipart/form-data">
+                                                        <!-- campo de subir documento -->
                                                         <div class="row">
-                                                            <div class="col-md-7">
-                                                            <label for="validationServer01" class="form-label">Nombre del Documento</label>
-                                                            <input
-                                                                   type="text"
-                                                                   class="form-control is-valid"
-                                                                   id="validationServer01"
-                                                                   value="Mark"
-                                                                   required
-                                                                   name="doc_name"
-                                                                 />
-                                                                
+                                                          <div class="col-align-self-center">
+                                                            <div class="form-group files">
+                                                              <h1>Sube Documento PDF</h1>
+                                                              <input type="file" class="form-control" aria-label="file example" name="doc" required />
                                                             </div>
+                                                          </div>
                                                         </div>
-                                                        <div class="row">
-                                                            <div class="col-md-9">
-                                                            <div class="invalid-feedback">Documento</div>
-                                                            <input type="file" class="form-control" aria-label="file example" name="doc" required />
-                                                          
-                                                            </div>
-                                                        </div>
+                                                        <!-- campo de subir documento -->
+
+                                                        <!-- compos de fecha de periodo algo asi -->
                                                         <div class="row mb-2">
-                                                            <div class="col-md-7">
+                                                          <div class="col-7">
                                                             <select class="form-select" aria-label="Default select example" name="semestre">
                                                               <option selected>Seleciona el semestre</option>
                                                               <option value="1">Ene-Jun</option>
                                                               <option value="2">Ago-Dic</option>
                                                             </select>
-                                                            </div>
+                                                          </div>
+                                                          <div class="col-4">
+                                                          <label class="control-label" for="date" >Fecha</label>
+                                                          <?php $year =  date("Y");?>
+                                                          <input type="number" min="1900" max="2099" step="1" value="<?php echo date("Y");?>" name="fechas" />
+                                                            
                                                         </div>
-                                                        <div class="row">
-                                                            <div class="col-md-4">
-                                                            <div class="form-outline">
-                                                                 <input type="text" id="typeText" class="form-control" name="fecha" />
-                                                                 <label class="form-label" for="typeText" >fecha hora</label>
-                                                               </div>
-                                                            </div>
-                                                            <div class="col-md-4 ms-auto">
-                                                            <button type="submit" value="upload" class="btn btn-primary btn-block">agregar documento</button>
-                                                            </div>
                                                         </div>
+                                                       
+                                                        <!-- compos de fecha de periodo algo asi -->
+                                                        
 
                                                 </form>
                                           </div>
                                       </div>
                                       <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">
-                                          Close
+                                         Close
+                                        </button>
+                                        <button  class="btn btn-primary" type="submit" value="upload" form="nameform">
+                                        agregar documento
                                         </button>
                                         
                                       </div>
@@ -125,21 +117,29 @@ $rows = $resultado->fetch_assoc();
                                   <thead>
                                     <tr>
                                       <th >Nombre del documento</th>
-                                      <th >año </th>
-                                      <th >semestre</th>
+                                      <th >semestre </th>
+                                      <th >año</th>
+                                      <th >operaciones</th>
+                                      
                                     </tr>
                                   </thead>
                                   <tbody>
                                       <?php 
-                                         $sql = "SELECT * from documentos";
+                                         $sql = "SELECT documentos.idDoc, documentos.url, periodo.fecha_estipada, documentos.año  
+                                                  FROM documentos INNER JOIN periodo ON documentos.idperiodo=periodo.id_periodo";
                                          $result = mysqli_query($conexion, $sql);
                    
                                          while ($mostrar = mysqli_fetch_array($result)) {
                                       ?>
                                     <tr>
-                                         <td><?=$mostrar['Documento']?></td>
+                                         <td><?=$mostrar['url']?></td>
+                                         <td><?=$mostrar['fecha_estipada']?>-<?=$mostrar['año']?></td> 
                                          <td><?=$mostrar['año']?></td>
-                                         <td><?=$mostrar['semestre']?></td>
+                                         <td>
+                                        <a href="php/deletedoc.php?buscarId=<?= $mostrar['idDoc'] ?>" class="btn btn-danger  btn-rounded">Eliminar</a>
+                                        <a href="php/viewdoc.php?buscarId=<?= $mostrar['idDoc'] ?>" class="btn btn-info  btn-rounded">Ver PDF</a>
+                                        <a href="edit_doc.php?buscarId=<?= $mostrar['idDoc'] ?>" class="btn btn-warning  btn-rounded">Actualizar</a>
+                                        </td>
                                     </tr>
                                     <?php }?>
                                   </tbody>

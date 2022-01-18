@@ -36,7 +36,13 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <!-- JS de datatable es cdn -->
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
+
+<!-- Bootstrap Date-Picker Plugin -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
 <script type="text/javascript" src="js/admin.js"></script>
+<script type="text/javascript" src="js/datePicker.js"></script>
+
 </head>                              
 <body class="bg-light">
 <header>
@@ -61,6 +67,7 @@
         <!-- validacion de usuario -->
           <a class="btn btn-outline-dark btn-rounded" role='button' href="administrador.php"><i class="fas fa-home fa-lg me-2"></i>Inicio</a>     
           <a class="btn btn-outline-dark btn-rounded" role='button' href="expen_cr.php"><i class="fas fa-file-contract fa-lg me-2"></i>Expedientes</a>           
+          <a class="btn btn-outline-dark btn-rounded" role='button' href="agregar_docs_user.php"><i class="fas fa-file-upload fa-lg me-2"></i>Subir documetos A usuarios</a>           
          <!-- validacion de usuario -->
     </div>
     <!-- componetes centro -->
