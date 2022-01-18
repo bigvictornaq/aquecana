@@ -112,7 +112,7 @@ if(isset($_POST['update_doc'])){
 <div class="container d-flex justify-content-center ">
                   
                    
-                    <form action="edit_doc.php?buscarId=<?=$obtenerID?>" method="POST" enctype="multipart/form-data">
+                    <form id="formedi" action="php/update_doc.php?buscarId=<?=$_GET['buscarId']?>" method="POST" enctype="multipart/form-data">
                         <div class="row mb-4">
                             <!-- CAMPO SELECIONAR PERIODO -->
                             <div class="col-md-6">
@@ -173,7 +173,7 @@ if(isset($_POST['update_doc'])){
                                   <div class="col-4"></div>
                             <div class="flex-column col-8  align-items-end">
                                 <button class="btn btn-primary">Cancelar</button>
-                                <button type="submit" value="update_doc" class="btn btn-primary">Actualizar</button>
+                                <button type="submit" value="update_doc" class="btn btn-primary" form="formedi">Actualizar</button>
                             </div>
                             
                         </div>

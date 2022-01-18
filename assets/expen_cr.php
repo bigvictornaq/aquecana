@@ -128,6 +128,7 @@ $rows = $resultado->fetch_assoc();
                                          $sql = "SELECT documentos.idDoc, documentos.url, periodo.fecha_estipada, documentos.año  
                                                   FROM documentos INNER JOIN periodo ON documentos.idperiodo=periodo.id_periodo";
                                          $result = mysqli_query($conexion, $sql);
+                                        // $mostra = mysqli_fetch_array($result);
                    
                                          while ($mostrar = mysqli_fetch_array($result)) {
                                       ?>
@@ -137,8 +138,8 @@ $rows = $resultado->fetch_assoc();
                                          <td><?=$mostrar['año']?></td>
                                          <td>
                                         <a href="php/deletedoc.php?buscarId=<?= $mostrar['idDoc'] ?>" class="btn btn-danger  btn-rounded">Eliminar</a>
-                                        <a href="php/viewdoc.php?buscarId=<?= $mostrar['idDoc'] ?>" class="btn btn-info  btn-rounded">Ver PDF</a>
                                         <a href="edit_doc.php?buscarId=<?= $mostrar['idDoc'] ?>" class="btn btn-warning  btn-rounded">Actualizar</a>
+                                        <a href="Documentos/<?php echo $correo.'/'.$mostrar['url'];?>" class="btn btn-info  btn-rounded" target="_blank" >Ver PDF</a>
                                         </td>
                                     </tr>
                                     <?php }?>
@@ -149,6 +150,10 @@ $rows = $resultado->fetch_assoc();
                         </div>  
                 </div>
         </div>
+
+     
+
+
 </section>
 <!-- Section: Documentos files -->
 
