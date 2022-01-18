@@ -2,6 +2,15 @@
 
 include 'conexion_be.php';
 
+session_start();
+
+
+$correo = $_SESSION['usuario'];
+if (!isset($_SESSION['usuario'])) {
+    header("Location: ../index2.php");
+}
+
+
 $obtenerID = $_GET['buscarId'];
 echo  $obtenerID;
 
@@ -24,16 +33,16 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         $allowed_exs = array('docx','pdf');  // extension permitida cana
         
         $new_doc_name = uniqid("PDF-", true).'.'.$doc_ex_lc; // esta puedes cambiarla,
-        $doc_upload_path = 'Documentos/'.$correo.'/'.$new_doc_name; //la ruta donde se va guardar
+        $doc_upload_path = '../Documentos/'.$correo.'/'.$new_doc_name; //la ruta donde se va guardar
 
-        if(file_exists('Documentos/'.$correo)){ //revisamos si existe ese carpeta
+        if(file_exists('../Documentos/'.$correo)){ //revisamos si existe ese carpeta
             move_uploaded_file($doc_tmp, $doc_upload_path);
             }else{
-            mkdir('Documentos/'.$correo);
+            mkdir('../Documentos/'.$correo);
            move_uploaded_file($doc_tmp, $doc_upload_path);
         }
          /*Query*/
-         $query = "UPDATE documentos SET Documento='$doc_n', 
+         $query = "UPDATE documentos SET Documento='$doc_name', 
                     url='$new_doc_name', año='$doc_fecha', idperiodo='$doc_periodo' WHERE IdDoc='$id'"; 
          
          /*ejecutar query */
