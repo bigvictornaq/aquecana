@@ -18,7 +18,7 @@ $rows = $resultado->fetch_assoc();
       <div class="container">
             <div class="card w-100" style="width: 18rem;">
                 <div class="card-body">
-                     <h2 class="card-title">Lista de Usuarios</h5>
+                     <h5 class="card-title">Lista de Usuarios</h5>
                      <p class="card-text">
                        Aqui se puede modificar todos los usuarios
                      </p>
@@ -28,12 +28,10 @@ $rows = $resultado->fetch_assoc();
                          <table id="tablita" class="display">
                   <thead>
                       <tr>
-                                <th>Nombre</th>
-                                <th>Biografia</th>
+                                <th>Nombre Del Usuario</th>
                                 <th>Correo</th>
-                                <th>Password</th>
-                                <th>Agregar Documento
-                                </th>
+                                <th>Documento Aiginado actualmente</th>
+                                <th>Agregar Document</th>
                                 <th>Ver perfil</th>
                       </tr>
                   </thead>
@@ -46,26 +44,45 @@ $rows = $resultado->fetch_assoc();
                       ?>
                       <tr>
                           <td><?=$mostrar['Nombre_Completo']?></td>
-                          <td><?=$mostrar['Biografia']?></td>
                           <td><?=$mostrar['Correo']?></td>
-                          <td><?=$mostrar['Password']?></td>
                           <td>
-                                        <a href="php/deleteusuario.php?buscarId=<?= $mostrar['Id'] ?>" class="btn btn-outline-secondary">Agregar documento</a>
+                              <div class="row">
+                                  <form id="formdoc" action="php/add_doc_to_user.php?buscarId=<?=$mostrar['Id']?>" method="post">
+                                  <div class="col">
+                                      <select name="periodo" class="form-select" aria-label="Default select example=">
+                                          <option selected>Seleciona el documento</option>
 
-                                    </td>
-                                    <td>
-                                        <a href="php/updateusuario.php?buscarId=<?= $mostrar['Id'] ?>" class="btn btn-outline-info">Visulizar Perfil</a>
+                                          <?php
+                                          $query = "SELECT documentos.idDoc, documentos.año, periodo.fecha_estipada FROM documentos INNER JOIN periodo ON documentos.idperiodo=periodo.id_periodo ";
+                                          $result2 = $conexion->query($query) or die($conexion->error);
 
-                                    </td>
+                                          while($show_docs = $result2->fetch_assoc()){
+                                          ?>
+                                          <option value="<?= $show_docs['idDoc']?>"><?php echo $show_docs['fecha_estipada']."-".$show_docs['año'] ;?></option>
+                                          <?php  } ?>
+                                      </select>
+                                  </div>
+                                  <div class="col">
+                                      <button type="submit" value="ne" form="formdoc" class="btn btn-outline-secondary">
+                                          Agregar Documento
+                                      </button>
+                                  </div>
+                                  </form>
+                              </div>
+                          </td>
+                          <td>
+                              <a href="php/view_user_profile.php?buscarId=<?= $mostrar['Id'] ?>" class="btn btn-outline-info">Visulizar Perfil</a>
+
+                          </td>
                       </tr>
                       <?php }?>
                   </tbody>
                   <tfoot>
                   <tr>
                                 <th>Nombre</th>
-                                <th>Biografia</th>
+
                                 <th>Correo</th>
-                                <th>Password</th>
+
                                 <th>Agregar Documento
                                 </th>
                                 <th>Ver perfil</th>
