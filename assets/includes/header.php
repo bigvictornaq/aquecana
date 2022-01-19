@@ -42,6 +42,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
 <script type="text/javascript" src="js/admin.js"></script>
 <script type="text/javascript" src="js/datePicker.js"></script>
+    <link rel="stylesheet" href="css/visualizador.css"> <!--estilos del visualizador de pdf-->
 
 </head>                              
 <body class="bg-light">
@@ -105,13 +106,25 @@
                    <img 
                  src="../assets/fotos de perfil/<?php echo utf8_decode($rows['Correo']); ?>/<?php echo utf8_decode($rows['Perfil']); ?> " 
                alt="" class="rounded-circle shadow-3-strong position-absolute" style="width: 168px; margin-top: -140px;">
+<!--                       colocar un boton alv-->
+
                 </div>
                   <?php }else{ ?>
                     <div class="d-flex justify-content-center">
                    <img 
                  src="../assets/images/Avatar.jpg" 
                alt="" class="rounded-circle shadow-3-strong position-absolute" style="width: 168px; margin-top: -140px;">
+                        <button type="button" class="btn btn-dark btn-floating" style="margin-left: 100px; margin-top: -17px">
+                            <i class="fas fa-camera-retro fa-2x"></i>
+                        </button>
                 </div>
+<!--                      foto de atras-->
+                   <div class="d-flex justify-content-end">
+                       <button type="button" class="btn btn-light   shadow-2-strong position-absolute" style="margin-right: 50px; margin-top: -85px">
+                           <i class="fas fa-camera-retro fa-lg"></i>
+                           Cambiar Foto de Portada
+                       </button>
+                   </div>
                   <?php }?>
                  
                 <!-- Background image -->
@@ -139,7 +152,13 @@
 
                 <!-- elementos de la Derecha -->
                 <div>
+                    <?php
+                        //checar que si es usuario primario cana
+                        $correo1 = utf8_decode($rows['Correo']);
+                        if($correo1 == $correo){
+                    ?>
                   <button type="button" class="btn btn-light" datadata-ripple-color="dark"><i class="fas fa-edit me-2"></i>Editar Pefil</button>
+                <?php }?>
                 </div>
                 <!-- elementos de la Derecha -->
           </section>
@@ -147,4 +166,5 @@
 
           </div>
   </section>
+
   <!-- background blanco -->
