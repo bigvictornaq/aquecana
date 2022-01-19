@@ -91,10 +91,11 @@
           <!-- section : las imagenes del pefil -->
           <section class="mb-5">
             <!-- Background image -->
+            <!-- https://mdbcdn.b-cdn.net/img/new/slides/041.webp -->
                <div
                 class="p-5 text-center bg-image shadow-1-strong rounded-bottom"
                 style="
-                background-image: url('https://mdbcdn.b-cdn.net/img/new/slides/041.webp');
+                background-image: url('../assets/photo_profile/<?php echo  utf8_decode($rows['Correo']).'/CoverPhoto/'.utf8_decode($rows['Perfil'])?>');
                 height: 400px;
               ">
                  </div>
@@ -114,13 +115,19 @@
                    <img 
                  src="../assets/images/Avatar.jpg" 
                alt="" class="rounded-circle shadow-3-strong position-absolute" style="width: 168px; margin-top: -140px;">
-                        <button type="button" class="btn btn-dark btn-floating" style="margin-left: 100px; margin-top: -17px">
+                        <button type="button" class="btn btn-dark btn-floating"
+                                data-mdb-toggle="modal"
+                                data-mdb-target="#staticCirclePhoto"
+                                style="margin-left: 100px; margin-top: -17px">
                             <i class="fas fa-camera-retro fa-2x"></i>
                         </button>
                 </div>
 <!--                      foto de atras-->
                    <div class="d-flex justify-content-end">
-                       <button type="button" class="btn btn-light   shadow-2-strong position-absolute" style="margin-right: 50px; margin-top: -85px">
+                       <button type="button" class="btn btn-light shadow-2-strong position-absolute"
+                               data-mdb-toggle="modal"
+                               data-mdb-target="#staticCoverPhoto"
+                               style="margin-right: 50px; margin-top: -85px">
                            <i class="fas fa-camera-retro fa-lg"></i>
                            Cambiar Foto de Portada
                        </button>
@@ -166,5 +173,67 @@
 
           </div>
   </section>
+
+    <!-- Modal -->
+    <div
+            class="modal fade"
+            id="staticCoverPhoto"
+            data-mdb-backdrop="static"
+            data-mdb-keyboard="false"
+            tabindex="-1"
+            aria-labelledby="staticBackdropLabel"
+            aria-hidden="true"
+    >
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Foto de Portada</h5>
+                    <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <?php
+                        echo $nombre1;
+                    ?>
+                    <form id="nameCoverPhoto" action="includes/fotoup.php" method="post" enctype="multipart/form-data">
+                        <div class="col-align-self-center">
+                            <div class="form-group files">
+                                <input type="file" class="form-control" aria-label="file example" name="userCover" required />
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">Close</button>
+                    <button type="submit" value="update" form="nameCoverPhoto" class="btn btn-primary">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div
+            class="modal fade"
+            id="staticCirclePhoto"
+            data-mdb-backdrop="static"
+            data-mdb-keyboard="false"
+            tabindex="-1"
+            aria-labelledby="staticBackdropLabel"
+            aria-hidden="true"
+    >
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Foto de Pefil</h5>
+                    <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">...</div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Understood</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
   <!-- background blanco -->
