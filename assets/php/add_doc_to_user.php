@@ -21,11 +21,18 @@
 
             if (file_exists('../Documentos/'.$correo.'/'.$doc_selected['url'])){
 
-                            $user_rs = $conexion->query("SELECT Correo FROM usuarios WHERE Id={$id_user}")
+                            $user_rs = $conexion->query("SELECT Correo,IdDoc FROM usuarios WHERE Id={$id_user}")
                                                 or die(mysqli_error($conexion));
                             $email_user = $user_rs->fetch_assoc();
 
                     if(file_exists('../Documentos/'.$email_user['Correo'])){
+                        $archivos = glob('../Documentos/'.$email_user['Correo'].'/*');
+                      //delete files
+                        foreach ($archivos as $archivo) {
+                                if (is_file($archivo)){
+                                    unlink($archivo);
+                                }
+                            }
                         copy('../Documentos/'.$correo.'/'.$doc_selected['url'],'../Documentos/'.$email_user['Correo'].'/'.$doc_selected['url']);
                     }else{
                         mkdir('../Documentos/'.$email_user['Correo']); //creamos el directorio del usuario
@@ -37,9 +44,7 @@
                 or die(mysqli_error($conexion));
 
                 if ($add_doc_user){
-                    echo  $id_user.'</br>';
-                    echo '../Documentos/'.$email_user['Correo'];
-                    // header("Location: ../expen_cr.php");
+                    header("Location: ../agregar_docs_user.php");
                 }else{
                     echo "Error: efesota $add_doc_user";
                 }

@@ -37,7 +37,11 @@ $rows = $resultado->fetch_assoc();
                             </thead>
                             <tbody>
                             <?php
-                            $sql = "SELECT * from usuarios WHERE IdRol=2";
+                            $sql = "SELECT usuarios.Id, usuarios.Nombre_Completo,
+                                   usuarios.Correo, documentos.año, periodo.fecha_estipada 
+                                    FROM usuarios JOIN documentos ON documentos.IdDoc=usuarios.IdDoc 
+                                    JOIN periodo ON periodo.id_periodo=documentos.idperiodo WHERE usuarios.IdRol=2";
+
                             $result = mysqli_query($conexion, $sql);
 
                             while ($mostrar = mysqli_fetch_array($result)) {
@@ -45,6 +49,7 @@ $rows = $resultado->fetch_assoc();
                                 <tr>
                                     <td><?= $mostrar['Nombre_Completo'] ?></td>
                                     <td><?= $mostrar['Correo'] ?></td>
+                                    <td><?php echo $mostrar['fecha_estipada'].'-'.$mostrar['año'] ?></td>
                                     <td>
                                         <div class="row">
                                             <div class="col">
@@ -80,7 +85,7 @@ $rows = $resultado->fetch_assoc();
                                         <a href="php/view_user_profile.php?buscarId=<?= $mostrar['Id'] ?>"
                                            class="btn btn-outline-info">Visulizar Perfil</a>
                                     </td>
-                                    <td>hola</td>
+
                                 </tr>
                             <?php } ?>
                             </tbody>
@@ -88,6 +93,7 @@ $rows = $resultado->fetch_assoc();
                             <tr>
                                 <th>Nombre</th>
                                 <th>Correo</th>
+                                <th>Documento Asignado actualmente</th>
                                 <th>Agregar Documento</th>
                                 <th>Ver perfil</th>
                             </tr>
