@@ -83,28 +83,88 @@
           <!-- section : las imagenes del pefil -->
           <section class="mb-5">
             <!-- Background image -->
-               <div
-                class="p-5 text-center bg-image shadow-1-strong rounded-bottom"
-                style="
-                background-image: url('https://mdbcdn.b-cdn.net/img/new/slides/041.webp');
-                height: 400px;
-              ">
-                 </div>
+
                   <?php 
-                      $nombre1 = utf8_decode($rows['Correo']);
-                      $nombre2 = utf8_decode($rows['Perfil']);
-                  if(file_exists("../fotos de perfil/{$nombre1}/{$nombre2}")){?>
-                   <div class="d-flex justify-content-center">
+                      $emails = utf8_decode($rows['Correo']);
+                      $profi = utf8_decode($rows['Perfil']);
+                      $portada = utf8_decode($rows['Portada']);
+
+                     
+                       
+                  if(file_exists("../assets/photo_profile/{$emails}/CoverPhoto/{$profi}") && file_exists('../assets/photo_profile/'.utf8_decode($rows['Correo']).'/CirclePhoto/'.utf8_decode($rows['Portada']))){?>
+              
+              <!-- div: contiene la imagen de la portada del inicio -->
+               <div
+               class="p-5 text-center bg-image shadow-1-strong rounded-bottom"
+               style="
+                background-image: url('../assets/photo_profile/<?php echo  utf8_decode($rows['Correo']).'/CoverPhoto/'.utf8_decode($rows['Perfil'])?>');
+                height: 400px;
+                ">
+                 </div>
+                 <!-- div: contiene la imagen de la portada del inicio -->
+
+                 <!-- div: contiene la imagen del circulo del inicio -->
+                 <div class="d-flex justify-content-center">
                    <img 
-                 src="../assets/fotos de perfil/<?php echo utf8_decode($rows['Correo']); ?>/<?php echo utf8_decode($rows['Perfil']); ?> " 
-               alt="" class="rounded-circle shadow-3-strong position-absolute" style="width: 168px; margin-top: -140px;">
+                   src="../assets/photo_profile/<?php echo utf8_decode($rows['Correo']).'/CirclePhoto/'.utf8_decode($rows['Portada']); ?> " 
+                   alt="" class="rounded-circle shadow-3-strong position-absolute" style="width: 168px; margin-top: -140px;">
+                      <!-- Button: Boton para cambiar foto Circulo -->
+                      <button type="button" class="btn btn-dark btn-floating"
+                                data-mdb-toggle="modal"
+                                data-mdb-target="#staticCirclePhoto"
+                                style="margin-left: 100px; margin-top: -17px">
+                            <i class="fas fa-camera-retro fa-2x"></i>
+                        </button>
+                      <!-- Button: Boton para cambiar foto Circulo -->
+                  </div>
+                  <!-- div: contiene la imagen del circulo del inicio -->
+
+                  <!-- DIV: contiene el boton cabiar foto de portada -->
+                  <div class="d-flex justify-content-end">
+                    <button type="button" class="btn btn-light shadow-2-strong position-absolute"
+                    data-mdb-toggle="modal"
+                    data-mdb-target="#staticCoverPhoto"
+                    style="margin-right: 50px; margin-top: -85px">
+                    <i class="fas fa-camera-retro fa-lg"></i>
+                    Cambiar Foto de Portada
+                  </button>
                 </div>
+                <!-- DIV: contiene el boton cabiar foto de portada -->
+
                   <?php }else{ ?>
+                    
+                         <div
+                          class="p-5 text-center bg-image shadow-1-strong rounded-bottom"
+                          style="
+                          background-image: url('https://mdbcdn.b-cdn.net/img/new/slides/041.webp');
+                          height: 400px;
+                        ">
+                         </div>
                     <div class="d-flex justify-content-center">
-                   <img 
-                 src="../assets/images/Avatar.jpg" 
-               alt="" class="rounded-circle shadow-3-strong position-absolute" style="width: 168px; margin-top: -140px;">
+                             <img 
+                               src="../assets/images/Avatar.jpg" 
+                               alt="" class="rounded-circle shadow-3-strong position-absolute" style="width: 168px; margin-top: -140px;">
+                            <!-- Button: Boton para cambiar foto Circulo -->
+                      <button type="button" class="btn btn-dark btn-floating"
+                                data-mdb-toggle="modal"
+                                data-mdb-target="#staticCirclePhoto"
+                                style="margin-left: 100px; margin-top: -17px">
+                            <i class="fas fa-camera-retro fa-2x"></i>
+                        </button>
+                      <!-- Button: Boton para cambiar foto Circulo -->   
+                    </div>
+                    <!-- DIV: contiene el boton cabiar foto de portada -->
+                  <div class="d-flex justify-content-end">
+                    <button type="button" class="btn btn-light shadow-2-strong position-absolute"
+                    data-mdb-toggle="modal"
+                    data-mdb-target="#staticCoverPhoto"
+                    style="margin-right: 50px; margin-top: -85px">
+                    <i class="fas fa-camera-retro fa-lg"></i>
+                    Cambiar Foto de Portada
+                  </button>
                 </div>
+                <!-- DIV: contiene el boton cabiar foto de portada -->
+
                   <?php }?>
                  
                 <!-- Background image -->
@@ -132,7 +192,8 @@
 
                 <!-- elementos de la Derecha -->
                 <div>
-                  <button type="button" class="btn btn-light" datadata-ripple-color="dark"><i class="fas fa-edit me-2"></i>Editar Pefil</button>
+                <a href="edit_profile.php" class="btn btn-light" datadata-ripple-color="dark"><i class="fas fa-edit me-2"></i>Editar Pefil</a>
+                  <!-- <button type="button" class="btn btn-light" datadata-ripple-color="dark"><i class="fas fa-edit me-2"></i>Editar Pefil</button> -->
                 </div>
                 <!-- elementos de la Derecha -->
           </section>
@@ -140,4 +201,77 @@
 
           </div>
   </section>
+
+   <!-- Modal: formulario para cambiar foto de porrada-->
+   <div
+    class="modal fade"
+    id="staticCoverPhoto"
+    data-mdb-backdrop="static"
+    data-mdb-keyboard="false"
+    tabindex="-1"
+    aria-labelledby="staticBackdropLabel"
+    aria-hidden="true"
+    >
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Foto de Portada</h5>
+          <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          
+                    <form id="nameCoverPhoto" action="includes/fotoup.php" method="post" enctype="multipart/form-data">
+                      <div class="col-align-self-center">
+                        <div class="form-group files">
+                          <input type="file" class="form-control" aria-label="file example" name="userCover" required />
+                        </div>
+                      </div>
+                    </form>
+                    
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">Close</button>
+                    <button type="submit" value="update" form="nameCoverPhoto" class="btn btn-primary">Guardar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Modal: formulario para cambiar foto de porrada-->
+          
+          <!-- Modal: formulario para cambiar foto de circulo-->
+          <div
+          class="modal fade"
+          id="staticCirclePhoto"
+          data-mdb-backdrop="static"
+          data-mdb-keyboard="false"
+          tabindex="-1"
+          aria-labelledby="staticBackdropLabel"
+          aria-hidden="true"
+          >
+          <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Foto de Pefil</h5>
+                <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                
+                <form id="nameCirclePhoto" action="includes/fotoup.php" method="post" enctype="multipart/form-data">
+                  <div class="col-align-self-center">
+                    <div class="form-group files">
+                      <input type="file" class="form-control" aria-label="file example" name="userCircle" required />
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">Close</button>
+                <button type="submit" value="update" form="nameCirclePhoto" class="btn btn-primary">Understood</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+    <!-- Modal: formulario para cambiar foto de circulo-->
+
   <!-- background blanco -->

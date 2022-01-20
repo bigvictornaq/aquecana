@@ -28,7 +28,12 @@ $rows = $resultado->fetch_assoc();
 <body>
     
         <h1 class="title">Resultados Evaluación Docente</h1>
-        <object class="pdfview" type="application/pdf" data="https://www.imaginanet.com/pdfinet/Dise%C3%B1o%20Responsive%20o%20Adaptativo.pdf"></object>
+        <?php 
+            if(!empty(utf8_decode($rows['IdDoc']))){ ?>
+
+                <object class="pdfview" type="application/pdf" data="https://www.imaginanet.com/pdfinet/Dise%C3%B1o%20Responsive%20o%20Adaptativo.pdf"></object>
+              <?php  }?>
+                <h1>NO aun asignado PDF</h1>
         <br>
         <br>
         <footer>      <?php include 'includes/footer.php' ?>  </footer>

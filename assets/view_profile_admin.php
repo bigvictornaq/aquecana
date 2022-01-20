@@ -30,9 +30,9 @@ $rows = $res->fetch_assoc();
 
 ?>
 
-<?php include 'includes/header.php'  ?>
+<?php include 'includes/barranavegacion.php'  ?>
 
-<div class="container text-center">
+<div class="container text-center mb-3">
     <div class="card">
         <div class="card-header">
             Featured
@@ -44,12 +44,12 @@ $rows = $res->fetch_assoc();
         </div>
     </div>
 </div>
-<div class="container py-5 bg-secondary">
+<div class="container  py-5">
     <?php
             $email = utf8_decode($rows['Correo']);
             $url =  utf8_decode($rows['url']);
     ?>
-    <object class="pdfview" type="application/pdf" data="<?php echo 'Documentos/'.$email.'/'.$url ?>"></object>
+    <object class="pdfview" width="100%" height="800px" type="application/pdf" data="<?php echo 'Documentos/'.$email.'/'.$url ?>"></object>
 </div>
 
 

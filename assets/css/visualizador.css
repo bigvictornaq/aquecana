@@ -12,9 +12,7 @@
 }
 
 .pdfview {
-    /* Centrado */
-    margin: auto;
-    display: block;
+   
     /* Tamaño */
     width: 850px;
     height: 100vh;

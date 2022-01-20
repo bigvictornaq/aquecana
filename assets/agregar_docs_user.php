@@ -83,6 +83,7 @@ $rows = $resultado->fetch_assoc();
                                     </td>
                                     <td>
                                         <a href="view_profile_admin.php?buscarId=<?= $mostrar['Id'] ?>"
+                                           target="_blank"                 
                                            class="btn btn-outline-info">Visulizar Perfil</a>
                                     </td>
 
